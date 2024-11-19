@@ -1,0 +1,85 @@
+.simply-countdown {
+  overflow: hidden;
+  display: table;
+  font-family: "Arial", sans-serif;
+  margin: auto;
+}
+
+.simply-countdown > .simply-section {
+  width: 50px;
+  height: 50px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  margin: 10px;
+  /* border-radius: 50%; */
+}
+.simply-countdown > .simply-section .simply-amount,
+.simply-countdown > .simply-section .simply-word {
+  display: block;
+  text-align: center;
+}
+
+.simply-countdown > .simply-section .simply-amount {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--pink);
+}
+
+
+/* Mobile phones */
+@media (max-width: 576px) {
+  .simply-countdown > .simply-section {
+    width: 40px; /* Reduce size */
+    height: 40px;
+    padding: 20px; /* Reduce padding */
+    margin: 5px; /* Reduce margin */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+
+  .simply-countdown > .simply-section .simply-amount {
+    font-size: 1.2rem; /* Reduce font size */
+  }
+
+  .simply-countdown > .simply-section .simply-word {
+    font-size: 0.8rem; /* Adjust word font size */
+  }
+}
+
+/* Large mobile devices (medium screens) */
+@media (max-width: 768px) {
+  .simply-countdown > .simply-section {
+    width: 45px; /* Slightly smaller for medium screens */
+    height: 45px;
+    padding: 50px; /* Reduce padding */
+    margin: 8px; /* Adjust margin */
+  }
+
+  .simply-countdown > .simply-section .simply-amount {
+    font-size: 1.4rem; /* Adjust font size */
+  }
+
+  .simply-countdown > .simply-section .simply-word {
+    font-size: 1rem; /* Adjust word font size */
+  }
+}
+
+/* Small mobile devices (small screens) */
+@media (max-width: 576px) {
+  .simply-countdown > .simply-section {
+    width: 25px; /* Further reduce size */
+    height: 25px;
+    padding: 20px; /* Further reduce padding */
+    margin: 5px;
+  }
+
+  .simply-countdown > .simply-section .simply-amount {
+    font-size: 1.2rem; /* Reduce font size further */
+  }
+
+  .simply-countdown > .simply-section .simply-word {
+    font-size: 0.8rem; /* Reduce word font size */
+  }
+}
