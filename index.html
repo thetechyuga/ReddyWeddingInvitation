@@ -79,8 +79,9 @@
             <div class="row">
               <div class="col-8 text-end">
                 <h3>Reddy Sekhar</h3>
-                <p>Edest S/o of </p>
+                
                 <p>
+                  Edest S/o of <br />
                   smt. Umadevi
                   & <br />
                   sri. Lakshmipathi Nayunivaru  
@@ -210,9 +211,14 @@
     <div id="audio-container">
       <!-- Audio element that automatically plays and loops the specified audio file -->
       <audio id="song" autoplay loop>
-        <source src="audio/reddy.mpeg" type="audio/mp3" />
+        <source src="audio/reddy.mpeg" type="audio/mpeg" />
       </audio>
-
+      <div class="audio-icon-wrapper" style="display: none;">
+        <i class="bi bi-play-circle"></i> <!-- You can use your preferred icon here -->
+      </div>
+      
+      <!-- Include Bootstrap Icons (for play/pause and disc icons) -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
       <!-- Wrapper for the audio icon, initially hidden (display: none) -->
       <div class="audio-icon-wrapper" style="display: none">
         <!-- Icon representing the audio status (initially a spinning disc icon) -->
@@ -284,24 +290,31 @@
       const audioIcon = document.querySelector(".audio-icon-wrapper i");
       const song = document.querySelector("#song");
       let isPlaying = false; // Variable to track whether the audio is playing or not
-
-      
-
+    
       // Function to enable scrolling
       function enableScroll() {
         window.onscroll = function () {}; // Unlock scrolling
         rootElement.style.scrollBehavior = "smooth"; // Re-enable smooth scrolling
         playAudio(); // Start playing the audio when scrolling is enabled
       }
-
+    
       // Function to play audio and display the audio icon
       function playAudio() {
         song.volume = 0.1; // Set the audio volume to 10%
         audioIconWrapper.style.display = "flex"; // Show the audio icon wrapper
-        song.play(); // Start playing the audio
+        
+        // Check if audio is playable on mobile and desktop
+        if (song.paused) {
+          song.play().catch((error) => {
+            // In case of an autoplay error (e.g., on mobile)
+            console.log('Autoplay prevented, user needs to interact.');
+            // Show the icon to allow user to click and play manually
+            audioIconWrapper.style.display = "flex";
+          });
+        }
         isPlaying = true; // Update the state to indicate audio is playing
       }
-
+    
       // Toggle audio playback when the audio icon is clicked
       audioIconWrapper.onclick = function () {
         if (isPlaying) {
@@ -313,12 +326,15 @@
           audioIcon.classList.add("bi-disc"); // Show disc icon
           audioIcon.classList.remove("bi-pause-circle"); // Remove pause icon
         }
-
+    
         isPlaying = !isPlaying; // Toggle the playing state
       };
-
-
-      // Initially disable scrolling
+    
+      // Initially try to play the audio when the page loads
+      window.onload = function () {
+        // Try to autoplay on desktop, but mobile browsers might block this
+        playAudio();
+      };
     </script>
       
   </body>
