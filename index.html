@@ -27,7 +27,7 @@
     <section id="hero" class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
       <main>
         <h4 style="margin-top: 1rem;">We <span> <bold>Inviting you for wedding of</bold></span></h4>
-        <h1 style="font-family: Algerian; margin-top: 2rem;">Reddy Sekhar <br />&<br /> Aparna</h1>
+        <h1 style="font-family: Algerian !important; margin-top: 2rem;">Reddy Sekhar <br />&<br /> Aparna</h1>
         
         <!-- Letak sini sbb nk display countdown sini -->
         <!-- <div class="simply-countdown"></div> -->
@@ -69,8 +69,8 @@
         <div class="row justify-content-center">
           <div class="col-md-8 text-center">
             <h2>Wedding</h2>
-            <h3>Held on December 06, 2024 at Hvn convention hall chelur</h3>
-            <p>Therefore, with all due respect, we intend to invite you to attend our wedding.</p>
+            <h3>on December 06, 2024 at Hvn convention hall,chelur.</h3>
+            <p>With heartful respect that we extend an invitation for you to attend our wedding.</p>
           </div>
         </div>
 
@@ -210,20 +210,40 @@
     <!-- Audio Section -->
     <div id="audio-container">
       <!-- Audio element that automatically plays and loops the specified audio file -->
-      <audio id="song" autoplay loop>
-        <source src="audio/reddy.mpeg" type="audio/mpeg" />
+      <!-- Audio Element -->
+      <audio id="song" preload="auto">
+        <source src="audio/reddy.mpeg" type="audio/mp3" />
       </audio>
-      <div class="audio-icon-wrapper" style="display: none;">
-        <i class="bi bi-play-circle"></i> <!-- You can use your preferred icon here -->
+      
+      <!-- Audio Icon Wrapper (for showing the icon) -->
+      <div class="audio-icon-wrapper" onclick="toggleAudio()">
+        <i class="bi bi-pause-circle"></i> <!-- Start with Pause Icon -->
       </div>
+      <style>/* Style for the audio icon wrapper */
+        .audio-icon-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          width: 70px;  /* Set the width of the wrapper */
+          height: 70px; /* Set the height of the wrapper */
+          background-color: #f1f1f1; /* Optional: Background color for the wrapper */
+          border-radius: 50%; /* Make it circular */
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow effect */
+        }
+        
+        /* Increase the size of the icon inside the wrapper */
+        .audio-icon-wrapper i {
+          font-size: 36px;  /* Increase the icon size */
+          color: #333;      /* Icon color */
+        }
+        </style>
+
       
       <!-- Include Bootstrap Icons (for play/pause and disc icons) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
       <!-- Wrapper for the audio icon, initially hidden (display: none) -->
-      <div class="audio-icon-wrapper" style="display: none">
-        <!-- Icon representing the audio status (initially a spinning disc icon) -->
-        <i class="bi bi-disc"></i>
-      </div>
+      
     </div>
     <!-- Audio Section End -->
 
@@ -284,57 +304,39 @@
 
     <!-- JavaScript to control scroll behavior and audio playback -->
     <script>
-      // Select the root element, the audio icon wrapper, the icon inside the wrapper, and the audio element
-      const rootElement = document.querySelector(":root");
-      const audioIconWrapper = document.querySelector(".audio-icon-wrapper");
-      const audioIcon = document.querySelector(".audio-icon-wrapper i");
-      const song = document.querySelector("#song");
-      let isPlaying = false; // Variable to track whether the audio is playing or not
-    
-      // Function to enable scrolling
-      function enableScroll() {
-        window.onscroll = function () {}; // Unlock scrolling
-        rootElement.style.scrollBehavior = "smooth"; // Re-enable smooth scrolling
-        playAudio(); // Start playing the audio when scrolling is enabled
-      }
-    
-      // Function to play audio and display the audio icon
-      function playAudio() {
-        song.volume = 0.1; // Set the audio volume to 10%
-        audioIconWrapper.style.display = "flex"; // Show the audio icon wrapper
-        
-        // Check if audio is playable on mobile and desktop
-        if (song.paused) {
-          song.play().catch((error) => {
-            // In case of an autoplay error (e.g., on mobile)
-            console.log('Autoplay prevented, user needs to interact.');
-            // Show the icon to allow user to click and play manually
-            audioIconWrapper.style.display = "flex";
-          });
-        }
-        isPlaying = true; // Update the state to indicate audio is playing
-      }
-    
-      // Toggle audio playback when the audio icon is clicked
-      audioIconWrapper.onclick = function () {
+      // Select the audio icon wrapper, the icon inside the wrapper, and the audio element
+        const audioIconWrapper = document.querySelector(".audio-icon-wrapper");
+        const audioIcon = document.querySelector(".audio-icon-wrapper i");
+        const song = document.querySelector("#song");
+        let isPlaying = false; // Variable to track whether the audio is playing or not
+
+        // Function to play or pause the audio and update the UI
+        function toggleAudio() {
         if (isPlaying) {
-          song.pause(); // Pause the audio if it is playing
-          audioIcon.classList.remove("bi-disc"); // Remove disc icon
-          audioIcon.classList.add("bi-pause-circle"); // Show pause icon
+        song.pause(); // Pause the audio if it is playing
+        audioIcon.classList.remove("bi-disc"); // Remove disc icon
+        audioIcon.classList.add("bi-pause-circle"); // Show pause icon
         } else {
-          song.play(); // Play the audio if it is paused
-          audioIcon.classList.add("bi-disc"); // Show disc icon
-          audioIcon.classList.remove("bi-pause-circle"); // Remove pause icon
+        song.play().catch((error) => {
+          // Handle potential autoplay issue on mobile by showing an error message
+          console.log('Autoplay prevented, user interaction required.');
+          alert("Please click the play icon to start the audio."); // Optional message
+        });
+        audioIcon.classList.add("bi-disc"); // Show disc icon (playing state)
+        audioIcon.classList.remove("bi-pause-circle"); // Remove pause icon
         }
-    
+
         isPlaying = !isPlaying; // Toggle the playing state
-      };
-    
-      // Initially try to play the audio when the page loads
-      window.onload = function () {
-        // Try to autoplay on desktop, but mobile browsers might block this
-        playAudio();
-      };
+        }
+
+        // Initial attempt to play audio when the page loads (works on desktop)
+        window.onload = function () {
+        // Try to autoplay only on desktop (mobile browsers will block autoplay)
+        if (!song.paused) {
+        song.play();
+        }
+        };
+
     </script>
       
   </body>
