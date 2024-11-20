@@ -6,14 +6,14 @@
 }
 
 .simply-countdown > .simply-section {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   padding: 20px; /* Base padding */
   display: flex;
   align-items: center;
   justify-content: center;
   float: left;
-  margin: 10px;
+  margin: 20px;
 }
 .simply-countdown > .simply-section .simply-amount,
 .simply-countdown > .simply-section .simply-word {
@@ -22,7 +22,7 @@
 }
 
 .simply-countdown > .simply-section .simply-amount {
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: var(--pink);
 }
