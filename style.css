@@ -28,7 +28,10 @@ body {
 
 .hero {
   position: relative;
-  /* min-height: 100vh; */
+  min-height: 70vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .hero h1,
@@ -38,22 +41,29 @@ body {
 }
 
 .hero h1 {
-  font-family: "Sacramento", cursive;
-  font-size: 6rem;
+  font-family: "Algerian", cursive;
+  font-size: 5.5  rem;
 }
 
 .hero h4 {
   font-size: 1.6rem;
+  margin-top: 1rem;
 }
 
 .hero p {
   font-size: 1.4rem;
+  margin-top: 2rem;
+}
+
+.hero a.btn {
+  margin-top: 2rem;
 }
 
 .hero a {
   color: var(--pink);
   background-color: pink;
   box-shadow: var(--pink);
+  font-size: medium;
 }
 
 .hero a {
@@ -61,30 +71,13 @@ body {
   color: white;
 }
 
-/* !important supaya style tu yg digunakan */
-.mynavbar {
-  background-color: rgba(255, 255, 255, 0.3) !important;
-  backdrop-filter: blur(4px);
-}
 
-
-
-.mynavbar .navbar-brand,
-.mynavbar .offcanvas-title {
-  font-family: "Sacramento", cursive;
-  font-size: 3.2rem;
-  font-weight: bold;
-}
-
-.mynavbar .nav-link {
-  text-transform: uppercase;
-}
 
 .home {
   background-image: url(img/bg.png);
   background-size: cover;
-  /* min-height: 100vh; */
-  /* margin-top: -6rem; */
+  min-height: 90vh;
+  margin-top: 0rem;
   padding-top: 4rem;
   padding-bottom: 5rem;
 }
@@ -101,25 +94,31 @@ body {
 .home h3 {
   color: #444;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .home p {
   font-size: 1.1rem;
   color: #666;
+  margin-bottom: -2rem;
 }
 
 .home .couple {
-  margin-top: 40px;
+  margin-top: 48px;
 }
 
 .home .couple h3 {
   font-family: "Sacramento";
   font-size: 2.4rem;
   color: var(--pink);
+  margin-top: 1rem;
 }
 
+
+
 .home .couple img {
+  height: 16rem;
   width: 100%;
 }
 
@@ -133,6 +132,7 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%) translateY(65px);
+  margin-top: 2rem;
 }
 
 .home .heart i {
@@ -148,7 +148,7 @@ body {
 }
 
 .info .alamat {
-  font-size: 1.1rem;
+  font-size: 1.6rem;
 }
 
 .info .description {
@@ -169,12 +169,12 @@ body {
 }
 
 .info .card-body {
-  font-size: 1rem;
+  font-size: 1.4rem;
 }
 
 .info .card-footer {
   border-top: 1px solid #999;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: 300;
 }
 
@@ -203,11 +203,11 @@ footer li {
 }
 
 .audio-icon-wrapper {
-  width: 4rem;
-  height: 4rem;
-  font-size: 4rem;
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
   position: fixed;
-  bottom: 2.5rem;
+  bottom: 4rem;
   right: 2rem;
   cursor: pointer;
   color: white;
@@ -287,15 +287,6 @@ footer li {
   }
 
 
-  .mynavbar .nav-link {
-    font-size: 2rem;
-    text-align: center;
-  }
-
-  .sticky-top {
-    overflow: hidden;
-  }
-
   .timeline li .timeline-image {
     width: 140px;
     height: 140px;
@@ -339,27 +330,64 @@ img {
   height: auto;
 }
 
+
 /* Extra Small Devices (Portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
+
+  #main {
+    margin-top: 10rem;
+  }
   #hero main h1 {
-    font-size: 1.8rem;
+ 
+    font-size: 4.5rem;
+  }
+  #hero main h4 {
+    font-size: 2.3rem;
+    margin-top: 1rem;
   }
 
   #hero main p {
-    font-size: 1rem;
+    font-size: 2rem;
+    margin-top: 7rem;
   }
 
   #hero .btn {
-    font-size: 0.9rem;
+    margin-top: 4rem;
+    font-size: 1rem;
     padding: 0.5rem 1rem;
   }
 
+.home h2
+ {
+  color: var(--pink);
+  font-family: "Sacramento";
+  font-size: 6rem;
+  font-weight: bold;
+}
+.home .couple h3 {
+  margin-top: 1rem;
+}
+.home h3 {
+  color: #444;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.home p {
+  font-size: 2rem;
+  color: #666;
+}
+
+.home .couple {
+  margin-top: 44px;
+}
+
   .home .couple img {
-    height: 8rem;
+    height: 17rem;
   }
 
   .info .card {
-    font-size: 0.9rem;
+    font-size: 1.5rem;
   }
 
   .navbar-brand {
@@ -383,7 +411,7 @@ img {
   }
 
   .info .card {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 }
 
