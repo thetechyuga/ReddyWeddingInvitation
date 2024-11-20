@@ -8,13 +8,12 @@
 .simply-countdown > .simply-section {
   width: 50px;
   height: 50px;
-  padding: 40px;
+  padding: 20px; /* Base padding */
   display: flex;
   align-items: center;
   justify-content: center;
   float: left;
   margin: 10px;
-  /* border-radius: 50%; */
 }
 .simply-countdown > .simply-section .simply-amount,
 .simply-countdown > .simply-section .simply-word {
@@ -31,25 +30,32 @@
 
 /* Mobile phones */
 @media (max-width: 576px) {
+
+  .simply-countdown{
+    margin-top: 3rem;
+  }
   .simply-countdown > .simply-section {
-    width: 40px; /* Reduce size */
-    height: 40px;
-    padding: 20px; /* Reduce padding */
-    margin: 5px; /* Reduce margin */
+    width: 50px; /* Ensure enough width */
+    height: 50px; /* Ensure enough height */
+    padding: 15px; /* Moderate padding */
+    margin: 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2); /* Subtle shadow */
   }
 
   .simply-countdown > .simply-section .simply-amount {
-    font-size: 1.2rem; /* Reduce font size */
+    font-size: 3rem; /* Reduce font size further */
   }
 
   .simply-countdown > .simply-section .simply-word {
-    font-size: 0.8rem; /* Adjust word font size */
+    font-size: 1rem; /* Reduce word font size */
   }
 }
 
 /* Large mobile devices (medium screens) */
 @media (max-width: 768px) {
+  .simply-countdown{
+    margin-top: 3rem;
+  }
   .simply-countdown > .simply-section {
     width: 45px; /* Slightly smaller for medium screens */
     height: 45px;
@@ -58,28 +64,31 @@
   }
 
   .simply-countdown > .simply-section .simply-amount {
-    font-size: 1.4rem; /* Adjust font size */
+    font-size: 3rem; /* Reduce font size further */
   }
 
   .simply-countdown > .simply-section .simply-word {
-    font-size: 1rem; /* Adjust word font size */
+    font-size: 1rem; /* Reduce word font size */
   }
 }
 
 /* Small mobile devices (small screens) */
 @media (max-width: 576px) {
+  .simply-countdown{
+    margin-top: 3rem;
+  }
   .simply-countdown > .simply-section {
-    width: 25px; /* Further reduce size */
-    height: 25px;
-    padding: 20px; /* Further reduce padding */
-    margin: 5px;
+    width: 40px; /* Further reduce size */
+    height: 40px;
+    padding: 10px; /* Further reduce padding */
+    margin: 10px;
   }
 
   .simply-countdown > .simply-section .simply-amount {
-    font-size: 1.2rem; /* Reduce font size further */
+    font-size: 3rem; /* Reduce font size further */
   }
 
   .simply-countdown > .simply-section .simply-word {
-    font-size: 0.8rem; /* Reduce word font size */
+    font-size: 1rem; /* Reduce word font size */
   }
 }
